@@ -1,5 +1,53 @@
 .App {
+  text-align: center; 
+  border: 2px solid gray;
+  border-radius: 10%;
+}
+
+.operations {
+  margin-left: 65px;
+  width: 100%;
+  font-size: 0;
+  display: grid;
+  grid-template-columns: auto auto ;
+  text-align:center;
+}
+.operations button {
+  background-color: gray;
+  border: 1px solid black;
+  width: 75%;
+  height: 40px;
+  margin: 5px;
+}
+.inputs {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.label {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal normal 900 30px/normal "Aldrich", Helvetica, sans-serif;
+  color: rgb(32, 44, 45);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 0 1px 0 rgb(128,141,147) , -1px 0 0 rgb(205,210,213) , -1px 2px 0 rgb(128,141,147) , -2px 1px 0 rgb(205,210,213) , -2px 3px 0 rgb(128,141,147) , -3px 2px 0 rgb(205,210,213) , -3px 4px 0 rgb(128,141,147) , -4px 3px 0 rgb(205,210,213) , -4px 5px 0 rgb(128,141,147) , -5px 4px 0 rgb(205,210,213) , -5px 6px 0 rgb(128,141,147) , -6px 5px 0 rgb(205,210,213) , -6px 7px 0 rgb(128,141,147) , -7px 6px 0 rgb(205,210,213) , -7px 8px 0 rgb(128,141,147) , -8px 7px 0 rgb(205,210,213) ;
+}
+.result{
+
+  font: normal 25px/1 "Times New Roman", Times, serif;
+  
+  
+}
+
+.signUp{
   text-align: center;
   margin-top: 10%;
 }
-
