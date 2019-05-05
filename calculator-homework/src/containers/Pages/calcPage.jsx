@@ -63,9 +63,10 @@ class CalcPage extends Component {
             value: value1 + " + " + value2
         }
 
-        let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
+        // let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
 
-        calcRef.child(id).set(data);
+        // calcRef.child(id).set(data);
+        calcRef.push(data);
 
     }
 
@@ -84,9 +85,10 @@ class CalcPage extends Component {
             value: value1 + " - " + value2
         }
 
-        let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
+        // let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
 
-        calcRef.child(id).set(data);
+        // calcRef.child(id).set(data);
+        calcRef.push(data);
 
 
     }
@@ -106,9 +108,10 @@ class CalcPage extends Component {
             value: value1 + " * " + value2
         }
 
-        let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
+        // let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
 
-        calcRef.child(id).set(data);
+        // calcRef.child(id).set(data);
+        calcRef.push(data);
 
     }
 
@@ -128,9 +131,10 @@ class CalcPage extends Component {
             value: value1 + " / " + value2
         }
 
-        let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
+        // let id = Math.random().toString(36).substr(2, 9);  ///Generate almost unique ID
 
-        calcRef.child(id).set(data);
+        calcRef.push(data);
+        // calcRef.child(id).set(data);
 
     }
     render() {
@@ -142,23 +146,23 @@ class CalcPage extends Component {
         return (
             <div className="App">
                 <nav><NavigationItems /></nav>
-                <h1 className='label'>Homework 1,<br />
-                    Homework 2
-      </h1>
+
 
                 <p>Calculator
         <br />
                     With Server logs
       </p>
-                {inputs}
-                <div className="operations">
-                    <Button clicked={this.addButtonClicked} value="+" />
-                    <Button clicked={this.subtractButtonClicked} value="-" />
-                    <Button clicked={this.multiplyButtonClicked} value="*" />
-                    <Button clicked={this.divideButtonClicked} value="/" />
+                <div className="calc">
+                    {inputs}
+                    <div className="operations">
+                        <Button clicked={this.addButtonClicked} value="+" />
+                        <Button clicked={this.subtractButtonClicked} value="-" />
+                        <Button clicked={this.multiplyButtonClicked} value="*" />
+                        <Button clicked={this.divideButtonClicked} value="/" />
+                    </div>
+                    <p className="result">Result</p>
+                    <p>{this.state.result}</p>
                 </div>
-                <p className="result">Result</p>
-                <p>{this.state.result}</p>
             </div>
         );
     }

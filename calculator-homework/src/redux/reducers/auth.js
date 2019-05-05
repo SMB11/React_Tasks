@@ -1,5 +1,6 @@
 import * as actionTypes from '../../store/actions/actionTypes';
 import { updateObject } from '../../store/utility';
+import * as firebase from 'firebase'
 
 const initialState = {
     token: null,
@@ -12,8 +13,9 @@ const authStart = (state, action) => {
     return updateObject(state, { error: null, loading: true })
 }
 const authSuccess = (state, action) => {
+    console.log(action);
     return updateObject(state, {
-        token: action.idToken,
+        token: action.token,
         userId: action.userId,
         error: null,
         loading: false
@@ -28,10 +30,16 @@ const authFail = (state, action) => {
 }
 
 const authLogout = (state, action) => {
-    return updateObject(state, {
-        token: null,
-        userId: null
-    })
+    console.log('logout')
+    // return updateObject(state, {
+    //     token: null,
+    //     userId: null
+    // })
+    return firebase.auth().signOut().then(function () {
+        window.location.reload()
+    }, function (error) {
+        console.error('Sign Out Error', error);
+    });
 }
 
 const reducer = (state = initialState, action) => {

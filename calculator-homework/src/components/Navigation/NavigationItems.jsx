@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
+import { connect } from 'react-redux';
 
-const navigationItems = () => (
-    <ul className='NavigationItems'>
+class navigationItems extends Component {
 
-        <NavigationItem link="/" exact>Calculator</NavigationItem>
-        <NavigationItem link="/auth">Auth</NavigationItem>
-    </ul>
-);
+    render() {
+        return (
+            <ul className='NavigationItems'>
 
-export default navigationItems;
+                <NavigationItem link="/" exact>Calculator</NavigationItem>
+
+                {!this.props.isAuth ? <NavigationItem link="/auth">Auth</NavigationItem>
+                    : <NavigationItem link="/logout">Logout</NavigationItem>}
+                <NavigationItem link="/logs">Logs</NavigationItem>
+            </ul>
+        );
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.token !== null
+    }
+}
+
+export default connect(mapStateToProps)(navigationItems);

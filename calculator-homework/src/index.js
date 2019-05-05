@@ -8,9 +8,11 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import reducer from './redux/reducers/reducer'
 import thunk from 'redux-thunk'
 import authReducer from './redux/reducers/auth'
+import logsReducer from './redux/reducers/logs'
 const rootReducer = combineReducers({
     calc: reducer,
-    auth: authReducer
+    auth: authReducer,
+    logs: logsReducer
 })
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

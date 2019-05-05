@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import axios from 'axios'
 import * as firebase from 'firebase'
 export const authStart = () => {
     return {
@@ -38,6 +37,7 @@ export const checkAuthTimeout = (expirationTime) => {
     }
 }
 
+
 export const auth = (email, password, isSignUp) => {
     let token = null;
 
@@ -63,13 +63,15 @@ export const auth = (email, password, isSignUp) => {
 
         else if (!isSignUp) {
             firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(response => {
-                    response.user.getIdToken().then(response => {
+                .then(res => {
+                    res.user.getIdToken().then(response => {
                         token = response;
+                        dispatch(authSuccess(token, res.user.uid))
+
+
                     })
-                    console.log(response);
-                    console.log(response.user.uid);
-                    dispatch(authSuccess(token, response.user.uid))
+
+
                     dispatch(checkAuthTimeout(3600000))
 
 
